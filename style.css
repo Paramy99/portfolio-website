@@ -1,381 +1,222 @@
-/* =========================
+/* ================================
    ROOT VARIABLES
-========================= */
+================================ */
 :root{
-    --bg-black-900: #f2f2fc;
-    --bg-black-100: #fdf9ff;
-    --bg-black-50: #e8dfec;
-    --text-black-900: #302e4d;
-    --text-black-700: #504e70;
-    --skin-color: #ec1839;
+    --bg-black-900:#f2f2fc;
+    --bg-black-100:#fdf9ff;
+    --bg-black-50:#e8dfec;
+    --text-black-900:#302e4d;
+    --text-black-700:#504e70;
+    --skin-color:#ec1839;
 }
 
 /* Dark Mode */
 body.dark{
-    --bg-black-900: #151515;
-    --bg-black-100: #222;
-    --bg-black-50: #393939;
-    --text-black-900: #ffffff;
-    --text-black-700: #e9e9e9;  
+    --bg-black-900:#151515;
+    --bg-black-100:#222;
+    --bg-black-50:#393939;
+    --text-black-900:#ffffff;
+    --text-black-700:#e9e9e9;
 }
 
-/* =========================
+/* ================================
    GLOBAL RESET
-========================= */
+================================ */
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-::before, ::after{
-    box-sizing: border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 body{
-    line-height: 1.5;
-    font-size: 16px;
-    font-family: sans-serif;
+    font-family:sans-serif;
+    line-height:1.5;
+    overflow-x:hidden;   /* Prevent left shift */
 }
 
 img{
-    max-width: 100%;
-    height: auto;
-    display: block;
+    max-width:100%;
+    height:auto;
+    display:block;
 }
 
-ul{
-    list-style: none;
-}
+ul{list-style:none;}
+a{text-decoration:none;}
 
-a{
-    text-decoration: none;
-}
-
-/* =========================
+/* ================================
    BUTTON
-========================= */
+================================ */
 .btn{
-    font-size: 16px;
-    font-weight: 500;
-    padding: 12px 35px;
-    color: #fff;
-    border: none;
-    border-radius: 40px;
-    background: var(--skin-color);
-    display: inline-block;
-    transition: all 0.3s ease;
+    font-size:16px;
+    font-weight:500;
+    padding:12px 30px;
+    border:none;
+    border-radius:40px;
+    background:var(--skin-color);
+    color:#fff;
+    cursor:pointer;
+    transition:0.3s ease;
 }
-
 .btn:hover{
-    transform: scale(1.05);
+    transform:scale(1.05);
 }
 
-.hidden{
-    display: none !important;
+/* ================================
+   LAYOUT (Mobile First)
+================================ */
+.aside{
+    width:270px;
+    height:100%;
+    position:fixed;
+    top:0;
+    left:-270px;   /* Hidden by default */
+    background:var(--bg-black-100);
+    border-right:1px solid var(--bg-black-50);
+    padding:30px;
+    transition:0.3s ease;
+    z-index:1000;
 }
 
-/* =========================
-   LAYOUT
-========================= */
+.aside.open{
+    left:0;
+}
+
 .main-content{
-    padding-left: 270px;
+    margin-left:0;   /* No shift on mobile */
+    transition:0.3s ease;
 }
 
 .section{
-    background-color: var(--bg-black-900);
-    min-height: 100vh;
-    padding: 0 30px;
-    position: relative;
-    overflow-x: hidden;
+    min-height:100vh;
+    padding:60px 20px;
+    background:var(--bg-black-900);
 }
 
-.container{
-    max-width: 1100px;
-    width: 100%;
-    margin: auto;
-}
-
-.row{
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: -15px;
-    margin-right: -15px;
-}
-
-.padd-15{
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-/* =========================
-   ASIDE
-========================= */
-.aside{
-    width: 270px;
-    background-color: var(--bg-black-100);
-    position: fixed;
-    left: 0;
-    top: 0;
-    height: 100%;
-    padding: 30px;
-    border-right: 1px solid var(--bg-black-50);
-    transition: 0.3s;
-    z-index: 1000;
-}
-
-.aside .logo{
-    font-size: 30px;
-    font-weight: 700;
-    margin-bottom: 50px;
-    color: var(--text-black-900);
-}
-
-.aside .nav li{
-    margin-bottom: 20px;
-}
-
-.aside .nav li a{
-    color: var(--text-black-900);
-    font-weight: 600;
-    padding: 8px 10px;
-    display: block;
-    border-bottom: 1px solid var(--bg-black-50);
-}
-
-.aside .nav li a.active{
-    color: var(--skin-color);
-}
-
-/* =========================
+/* ================================
    HOME
-========================= */
+================================ */
 .home{
-    display: flex;
-    align-items: center;
-    min-height: 100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
 }
 
 .home .home-info{
-    flex: 0 0 60%;
-    max-width: 60%;
+    width:100%;
 }
 
 .home .my-img{
-    flex: 0 0 40%;
-    max-width: 40%;
-    text-align: center;
-}
-
-.home .my-img img{
-    border-radius: 10px;
+    margin-top:30px;
 }
 
 h3.hello{
-    font-size: 28px;
-    margin-bottom: 10px;
+    font-size:24px;
 }
 
 h3.profession{
-    font-size: 30px;
-    margin-bottom: 20px;
+    font-size:26px;
 }
 
 .home-info p{
-    font-size: 18px;
-    color: var(--text-black-700);
+    font-size:16px;
+    color:var(--text-black-700);
 }
 
-/* =========================
+/* ================================
    ABOUT
-========================= */
-.about .about-content{
-    flex: 0 0 100%;
-    max-width: 100%;
+================================ */
+.row{
+    display:flex;
+    flex-wrap:wrap;
 }
 
 .about .personal-info,
 .about .skills{
-    margin-top: 40px;
+    width:100%;
+    margin-top:30px;
 }
 
-.about .personal-info{
-    flex: 0 0 60%;
-    max-width: 60%;
-}
-
-.about .skills{
-    flex: 0 0 40%;
-    max-width: 40%;
-}
-
-.skill-item{
-    margin-bottom: 20px;
-}
-
-.progress{
-    background: var(--bg-black-50);
-    height: 7px;
-    border-radius: 4px;
-    position: relative;
-}
-
-.progress-in{
-    height: 100%;
-    background: var(--skin-color);
-    border-radius: 4px;
-}
-
-/* =========================
+/* ================================
    SERVICES
-========================= */
+================================ */
 .service .service-item{
-    flex: 0 0 33.33%;
-    max-width: 33.33%;
-    margin-bottom: 30px;
+    width:100%;
+    margin-bottom:30px;
 }
 
-.service-item-inner{
-    background: var(--bg-black-100);
-    padding: 30px;
-    border-radius: 10px;
-    text-align: center;
-    transition: 0.3s;
-}
-
-.service-item-inner:hover{
-    box-shadow: 0 0 20px rgba(0,0,0,0.1);
-}
-
-/* =========================
+/* ================================
    PORTFOLIO
-========================= */
+================================ */
 .portfolio .portfolio-item{
-    flex: 0 0 33.33%;
-    max-width: 33.33%;
-    margin-bottom: 30px;
+    width:100%;
+    margin-bottom:30px;
 }
 
-/* =========================
+/* ================================
    CONTACT
-========================= */
+================================ */
 .contact .contact-info-item{
-    flex: 0 0 25%;
-    max-width: 25%;
-    text-align: center;
-    margin-bottom: 40px;
+    width:100%;
+    text-align:center;
+    margin-bottom:30px;
 }
 
-.contact-form .col-6{
-    flex: 0 0 50%;
-    max-width: 50%;
-}
-
+.contact-form .col-6,
 .contact-form .col-12{
-    flex: 0 0 100%;
-    max-width: 100%;
+    width:100%;
 }
 
-.form-control{
-    width: 100%;
-    height: 50px;
-    border: 1px solid var(--bg-black-50);
-    border-radius: 25px;
-    padding: 10px 20px;
-    background: var(--bg-black-100);
-    color: var(--text-black-900);
-}
-
-textarea.form-control{
-    height: 140px;
-}
-
-/* =========================
-   RESPONSIVE DESIGN
-========================= */
-
-/* Large Tablet */
-@media (max-width: 1199px){
-
-    .aside{
-        left: -270px;
-    }
-
-    .aside.open{
-        left: 0;
-    }
-
-    .main-content{
-        padding-left: 0;
-    }
-}
-
-/* Tablet */
-@media (max-width: 991px){
+/* ================================
+   TABLET
+================================ */
+@media (min-width:768px){
 
     .home{
-        flex-direction: column;
-        text-align: center;
+        flex-direction:row;
+        text-align:left;
     }
 
-    .home .home-info,
+    .home .home-info{
+        width:60%;
+    }
+
     .home .my-img{
-        flex: 0 0 100%;
-        max-width: 100%;
+        width:40%;
     }
 
     .service .service-item,
     .portfolio .portfolio-item{
-        flex: 0 0 50%;
-        max-width: 50%;
+        width:50%;
     }
 
     .contact .contact-info-item{
-        flex: 0 0 50%;
-        max-width: 50%;
+        width:50%;
     }
 
-    .about .personal-info,
-    .about .skills{
-        flex: 0 0 100%;
-        max-width: 100%;
-    }
 }
 
-/* Mobile */
-@media (max-width: 767px){
+/* ================================
+   DESKTOP
+================================ */
+@media (min-width:1200px){
 
-    .section{
-        padding: 0 15px;
+    .aside{
+        left:0;  /* Visible */
+    }
+
+    .main-content{
+        margin-left:270px;  /* Shift only on desktop */
     }
 
     .service .service-item,
-    .portfolio .portfolio-item,
+    .portfolio .portfolio-item{
+        width:33.33%;
+    }
+
     .contact .contact-info-item{
-        flex: 0 0 100%;
-        max-width: 100%;
-    }
-
-    .contact-form .col-6{
-        flex: 0 0 100%;
-        max-width: 100%;
-    }
-
-    h3.hello{
-        font-size: 22px;
-    }
-
-    h3.profession{
-        font-size: 24px;
-    }
-}
-
-/* Small Mobile */
-@media (max-width: 480px){
-
-    .btn{
-        padding: 10px 20px;
-        font-size: 14px;
+        width:25%;
     }
 
 }
