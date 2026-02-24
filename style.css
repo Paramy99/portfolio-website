@@ -44,7 +44,7 @@ body{
 }
 .section{
     background-color: var(--bg-black-900);
-    min-width: 100vw;
+    min-height: 100vh;
     display: block;
     padding: 0 30px;
     opacity: 1;
